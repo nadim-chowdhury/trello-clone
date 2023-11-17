@@ -4,7 +4,7 @@ import { OrganizationSwitcher, UserButton, auth } from "@clerk/nextjs";
 
 export default function Navbar() {
   return (
-    <div className="fixed z-50 top-0 w-full border-b shadow-sm flex items-center px-4 py-2">
+    <div className="fixed z-50 top-0 w-full border-b shadow-sm flex items-center px-4 py-2 bg-white">
       <div className="flex items-center gap-x-4">
         <Button variant="primary" size="sm" className="hidden md:block">
           Create
