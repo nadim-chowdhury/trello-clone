@@ -1,10 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { OrganizationSwitcher, UserButton, auth } from "@clerk/nextjs";
+import MobileSidebar from "./MobileSidebar";
 
 export default function Navbar() {
   return (
     <div className="fixed z-50 top-0 w-full border-b shadow-sm flex items-center px-4 py-2 bg-white">
+      <MobileSidebar />
+
       <div className="flex items-center gap-x-4">
         <Button variant="primary" size="sm" className="hidden md:block">
           Create
