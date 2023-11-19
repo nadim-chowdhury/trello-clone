@@ -13,8 +13,8 @@ export default function MobileSidebar() {
 
   const pathname = usePathname();
   const isOpen = useMobileSidebar((state) => state.isOpen);
-  const onOpen = useMobileSidebar((state) => state.onClose);
-  const onClose = useMobileSidebar((state) => state.onOpen);
+  const onOpen = useMobileSidebar((state) => state.onOpen);
+  const onClose = useMobileSidebar((state) => state.onClose);
 
   useEffect(() => {
     setisMounted(true);

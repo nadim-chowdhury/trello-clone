@@ -14,7 +14,9 @@ interface SidebarProps {
   storageKey?: string;
 }
 
-export default function Sidebar({ storageKey = "" }: SidebarProps) {
+export default function Sidebar({
+  storageKey = "t-sidebar-mobile-state",
+}: SidebarProps) {
   const [expanded, setExpanded] = useLocalStorage<Record<string, any>>(
     storageKey,
     {}
@@ -40,7 +42,20 @@ export default function Sidebar({ storageKey = "" }: SidebarProps) {
   };
 
   if (!isLoadedOrg || !isLoadedOrgList || userMemberships.isLoading) {
-    return <Skeleton />;
+    return (
+      <>
+        <div className="flex justify-between items-center mb-2">
+          <Skeleton className="h-10 w-1/2" />
+          <Skeleton className="h-10 w-10" />
+        </div>
+
+        <div className="space-y-2">
+          <NavItem.Skeleton />
+          <NavItem.Skeleton />
+          <NavItem.Skeleton />
+        </div>
+      </>
+    );
   }
 
   return (
