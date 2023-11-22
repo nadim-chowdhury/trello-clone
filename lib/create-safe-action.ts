@@ -11,15 +11,16 @@ export type ActionState<TInput, TOutput> = {
 };
 
 export const createSafeAction = <TInput, TOutput>(
-  shcema: z.Schema<TInput>,
-  handler: (validateData: TInput) => Promise<ActionState<TInput, TOutput>>
+  schema: z.Schema<TInput>,
+  handler: (validatedData: TInput) => Promise<ActionState<TInput, TOutput>>
 ) => {
   return async (data: TInput): Promise<ActionState<TInput, TOutput>> => {
-    const validationResult = schema.safePerse(data);
-
+    const validationResult = schema.safeParse(data);
     if (!validationResult.success) {
-      fieldErrors: validationResult.error.flatten()
-        .FieldErrors as FieldErrors<TInput>;
+      return {
+        fieldErrors: validationResult.error.flatten()
+          .fieldErrors as FieldErrors<TInput>,
+      };
     }
 
     return handler(validationResult.data);

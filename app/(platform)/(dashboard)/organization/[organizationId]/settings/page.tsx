@@ -1,6 +1,6 @@
 import { OrganizationProfile } from "@clerk/nextjs";
 
-export default function Settings() {
+const SettingsPage = () => {
   return (
     <div className="w-full">
       <OrganizationProfile
@@ -20,4 +20,6 @@ export default function Settings() {
       />
     </div>
   );
-}
+};
+
+export default SettingsPage;
